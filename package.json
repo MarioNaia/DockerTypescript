@@ -1,0 +1,43 @@
+{
+  "name": "tech-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "UNLICENSED",
+  "private": "true",
+  "scripts": {
+    "clean": "rm dist",
+    "build": "tsc",
+    "prestart": "npm run db:init && npm run db:latest",
+    "start": "NODE_PATH=./dist node ./dist/index.js",
+    "local": "ts-node-dev --inspect=7000 ./src/index.ts",
+    "db:init": "node dist/db/create-database.js",
+    "db:latest": "npx knex migrate:latest --knexfile dist/knexfile.js",
+    "lint:tdd": "nodemon --watch ./src --ext ts  --exec npm run lint",
+    "lint": "eslint . --ext .ts",
+    "test:tdd": "nodemon --delay 0.01 --inspect=7001 --watch ./src --ext ts,json --exec npm test",
+    "test": "lab ./src --pattern '\\.spec'"
+  },
+  "dependencies": {
+    "@hapi/boom": "^9.1.1",
+    "@hapi/hapi": "^20.1.0",
+    "joi": "^17.3.0",
+    "knex": "^0.21.17",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@hapi/code": "^8.0.2",
+    "@hapi/lab": "^24.1.0",
+    "@types/hapi__hapi": "^20.0.5",
+    "@types/sinon": "^9.0.10",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "eslint": "^7.19.0",
+    "lab-transform-typescript": "^3.0.1",
+    "nodemon": "^2.0.7",
+    "sinon": "^9.2.4",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.3"
+  }
+}

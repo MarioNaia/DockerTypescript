@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "noImplicitAny": true,
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "strict": true,
+  },
+  "include": ["src/**/*"]
+}
